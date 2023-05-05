@@ -28,7 +28,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h \
  ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart.h \
  ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart_ex.h \
- C:/Users/el_gl/Desktop/EMBEDDED\ SYSTEMS\ STATE\ MACHINES\ &\ DATA\ STRUCTURES/plantilla/plantilla_state_machine/serial_uart/serial_uart.h
+ C:/Users/el_gl/STM32CubeIDE/workspace_1.8.0/state\ machine\ pattern/serial/serial.h \
+ C:/Users/el_gl/STM32CubeIDE/workspace_1.8.0/state\ machine\ pattern/leds/led.h \
+ C:/Users/el_gl/STM32CubeIDE/workspace_1.8.0/state\ machine\ pattern/lcd/lcd.h
 ../Core/Inc/main.h:
 ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal.h:
 ../Core/Inc/stm32g0xx_hal_conf.h:
@@ -59,4 +61,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h:
 ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart.h:
 ../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart_ex.h:
-C:/Users/el_gl/Desktop/EMBEDDED\ SYSTEMS\ STATE\ MACHINES\ &\ DATA\ STRUCTURES/plantilla/plantilla_state_machine/serial_uart/serial_uart.h:
+C:/Users/el_gl/STM32CubeIDE/workspace_1.8.0/state\ machine\ pattern/serial/serial.h:
+C:/Users/el_gl/STM32CubeIDE/workspace_1.8.0/state\ machine\ pattern/leds/led.h:
+C:/Users/el_gl/STM32CubeIDE/workspace_1.8.0/state\ machine\ pattern/lcd/lcd.h:

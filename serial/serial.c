@@ -1,8 +1,11 @@
 /*
- * serial_uart.c
+ * SerialUart.c
  *
- *  Created on: Apr 4, 2023
- *      Author: el_gl
+ *Escrita por: Jose Manuel Ramirez Vega
+ *16-junio-2022
+ *16-junio-2022
+ *16-junio-2022Esta libreria usa las interrupciones para poder controlarse
+ *16-junio-2022Esta
  */
 
 
@@ -11,13 +14,13 @@
 //init the reception of 1 byte interrupt
 
 
-#include "stm32g0xx_hal.h"
-#include "serial_uart.h"
+
+#include "serial.h"
 #include "String.h"
 #include "stdio.h"
 
 
-extern UART_HandleTypeDef huart1; // if you want to use toher serial port chage this
+extern UART_HandleTypeDef huart2; // if you want to use toher serial port chage this
 
 volatile uint8_t Index =0;
 uint8_t Data_Rx[SIZE_RX];// buffer to copy data of uart
@@ -47,7 +50,7 @@ void SerialUartReceiveEnable(uint8_t buff[50],uint8_t length)
 
 //only receive one byte
 
-	HAL_UART_Receive_IT(&huart1, buff, length);
+	HAL_UART_Receive_IT(&huart2, buff, length);
 
 }
 
@@ -57,7 +60,7 @@ void SerialUartReceiveEnable(uint8_t buff[50],uint8_t length)
 void SerialUartSendString(char *ptr)
 {
 uint16_t DataLen = strlen(ptr);
-HAL_UART_Transmit(&huart1, (const uint8_t *)ptr, DataLen, HAL_MAX_DELAY);
+HAL_UART_Transmit(&huart2, (const uint8_t *)ptr, DataLen, HAL_MAX_DELAY);
 }
 
 void SerialUartSendVarInt(char *Text,float var)
@@ -136,6 +139,6 @@ void SerialUartReceiveCommand(uint8_t Buff[50])
 
 PUTCHAR_PROTOTYPE
 {
-  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
   return ch;
 }

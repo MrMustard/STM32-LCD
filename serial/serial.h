@@ -1,12 +1,15 @@
 /*
- * serial_uart.h
+ * serial.h
  *
- *  Created on: Apr 4, 2023
+ *  Created on: May 2, 2023
  *      Author: el_gl
  */
 
-#ifndef SERIAL_UART_H_
-#define SERIAL_UART_H_
+#ifndef SERIAL_H_
+#define SERIAL_H_
+
+
+#include "main.h"
 
 #define SIZE_RX 50
 
@@ -28,6 +31,4 @@ void SerialUartReceiveIR();
 
 void SerialUartReceiveCommand(uint8_t Buff[50]);
 
-
-
-#endif /* SERIAL_UART_H_ */
+#endif /* SERIAL_H_ */

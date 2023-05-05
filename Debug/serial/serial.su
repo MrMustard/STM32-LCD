@@ -1,0 +1,7 @@
+../serial/serial.c:32:6:SerialUartInit	8	static
+../serial/serial.c:48:6:SerialUartReceiveEnable	16	static
+../serial/serial.c:60:6:SerialUartSendString	32	static
+../serial/serial.c:66:6:SerialUartSendVarInt	80	static
+../serial/serial.c:77:6:SerialUartReceiveIR	16	static
+../serial/serial.c:103:6:SerialUartReceiveCommand	24	static
+../serial/serial.c:140:1:__io_putchar	16	static
