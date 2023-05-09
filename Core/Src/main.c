@@ -92,9 +92,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   //SerialUartInit();
-  lcd_init();//inicializamos la pantalla
-  lcd_clear();
-  lcd_return_home();
+  //lcd_init();//inicializamos la pantalla
+  //lcd_clear();
+  //lcd_return_home();
   SerialUartSendString("Iniciando programa\n");
   led_off(led_status);
   led_all_on();
@@ -103,8 +103,38 @@ int main(void)
   HAL_Delay(100);
   led_on(led_status);
 
-  uint8_t variable;
-  uint8_t buffer[16];
+  uint8_t variable_1=0;
+  uint8_t buffer_1[16];
+  uint8_t variable_2=0;
+  uint8_t buffer_2[16];
+
+//we have to desing the pins and port toc reate lcd
+//first we have to create a lcd_t varaible, this varaible recevive all the configuration data
+
+
+/*
+ lcd_t lcd_1= lcd_create_4_bit(	RSD_GPIO_Port, RWD_GPIO_Port, ED_GPIO_Port,
+		  	  	  	  	  	  	  	RSD_Pin, RWD_Pin, ED_Pin,
+									D7D_GPIO_Port, D6D_GPIO_Port, D5D_GPIO_Port, D4D_GPIO_Port,
+									D7D_Pin, D6D_Pin, D5D_Pin, D4D_Pin, lcd_chr_16x2_mode);
+									*/
+
+  lcd_t lcd_1 = lcd_create_8_bit( RSD_GPIO_Port, RWD_GPIO_Port, ED_GPIO_Port,
+		  	  	  	  	  	  	  RSD_Pin, RWD_Pin, ED_Pin,
+								  D7D_GPIO_Port, D6D_GPIO_Port,D5D_GPIO_Port,D4D_GPIO_Port,
+								  D3D_GPIO_Port, D2D_GPIO_Port,D1D_GPIO_Port,D0D_GPIO_Port,
+								  D7D_Pin,D6D_Pin,D5D_Pin,D4D_Pin,
+								  D3D_Pin,D2D_Pin,D1D_Pin,D0D_Pin, lcd_chr_16x2_mode);
+
+
+  lcd_t lcd_2 = lcd_create_4_bit(	RS_D2_GPIO_Port, RW_D2_GPIO_Port, EN_D2_GPIO_Port,
+		  	  	  	  	  	  	    RS_D2_Pin, RW_D2_Pin, EN_D2_Pin,
+									D7_D2_GPIO_Port, D6_D2_GPIO_Port, D5_D2_GPIO_Port, D4_D2_GPIO_Port,
+									D7_D2_Pin, D6_D2_Pin, D5_D2_Pin, D4_D2_Pin, lcd_chr_16x2_mode);
+  lcd_clear(&lcd_1);
+  lcd_clear(&lcd_2);
+  lcd_return_home(&lcd_1);
+  lcd_return_home(&lcd_2);
 
   /* USER CODE END 2 */
 
@@ -120,16 +150,80 @@ int main(void)
 	 // lcd_set_cursor(0, 0);
 	  //lcd_print_string((uint8_t *)" PRUEBA ");
 	  //HAL_Delay(1000);
-	  variable=button_read();
-	  lcd_set_cursor(0, 0);
-	  lcd_print_string((uint8_t *)"Valor de botones");
-	  lcd_set_cursor(1, 0);
-	  sprintf(buffer,"%3d",variable);
-	  lcd_print_string(buffer);
+	  //variable=button_read();
+	  //lcd_set_cursor(0, 0);
+	  //lcd_print_string((uint8_t *)"Valor de botones");
+	  //lcd_set_cursor(1, 0);
+	  //sprintf(buffer,"%3d",variable);
+	 // lcd_print_string(buffer);
 	  //HAL_Delay(100);
 
+	 lcd_set_cursor(&lcd_1, 0, 0);
+	  lcd_print_string(&lcd_1, "PRUEBA 1");
+	  lcd_set_cursor(&lcd_1, 1, 0);
+	  lcd_print_string(&lcd_1, "LCD 1");
+	  sprintf(buffer_1,"%3d",variable_1);
+	  lcd_set_cursor(&lcd_1, 1, 6);
+	  lcd_print_string(&lcd_1, buffer_1);
+	  variable_1++;
+	  lcd_set_cursor(&lcd_1, 0, 15);
+	  lcd_print_string(&lcd_1, "<");
 
-	  //HAL_Delay(1000);
+
+	  lcd_set_cursor(&lcd_2, 0, 0);
+	  lcd_print_string(&lcd_2, "PRUEBA 1");
+	  lcd_set_cursor(&lcd_2, 1, 0);
+	  lcd_print_string(&lcd_2, "LCD 2");
+	  sprintf(buffer_2,"%3d",variable_2);
+	  lcd_set_cursor(&lcd_2, 1, 6);
+	  lcd_print_string(&lcd_2, buffer_2);
+	  variable_2++;
+	  lcd_set_cursor(&lcd_2, 0, 15);
+	  lcd_print_string(&lcd_2, "*");
+
+
+	/* prueba++;
+	  send_to_lcd(&lcd_1,prueba,1);
+	  HAL_Delay(10);*/
+	 /* HAL_GPIO_WritePin(D7D_GPIO_Port, D7D_Pin, 1);
+	  HAL_GPIO_WritePin(D6D_GPIO_Port, D6D_Pin, 1);
+	  HAL_GPIO_WritePin(D5D_GPIO_Port, D5D_Pin, 1);
+	  HAL_GPIO_WritePin(D4D_GPIO_Port, D4D_Pin, 1);
+	  HAL_GPIO_WritePin(D3D_GPIO_Port, D3D_Pin, 1);
+	  HAL_GPIO_WritePin(D2D_GPIO_Port, D2D_Pin, 1);
+	  HAL_GPIO_WritePin(D1D_GPIO_Port, D1D_Pin, 0);
+	  HAL_GPIO_WritePin(D0D_GPIO_Port, D0D_Pin, 1);*/
+
+
+
+
+
+
+
+
+
+	 /* lcd_set_cursor_p(&lcd_1, 0, 0);
+	  lcd_set_cursor_p(&lcd_2, 0, 0);
+
+	  lcd_print_string_p(&lcd_1, "PRUEBA 1");
+	  lcd_print_string_p(&lcd_2, "PRUEBA 1");
+	  lcd_set_cursor_p(&lcd_1, 1, 0);
+	  lcd_set_cursor_p(&lcd_2, 1, 0);
+	  lcd_print_string_p(&lcd_1, "DATA:");
+	  lcd_print_string_p(&lcd_2, "DATA:");
+	  lcd_set_cursor_p(&lcd_1, 0, 15);
+	  lcd_set_cursor_p(&lcd_2, 0, 15);
+	  lcd_print_string_p(&lcd_1, "<");
+	  lcd_print_string_p(&lcd_2, "<");*/
+
+
+
+
+
+
+
+
+	 //  HAL_Delay(1000);
 	  //lcd_clear();
 	  //HAL_Delay(1000);
 
@@ -237,10 +331,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, led_red_Pin|led_yellow_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, led_green_Pin|RSD_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, led_green_Pin|RS_D2_Pin|RW_D2_Pin|EN_D2_Pin
+                          |D4_D2_Pin|D0D_Pin|D1D_Pin|D2D_Pin
+                          |D3D_Pin|RSD_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, led_status_Pin|D6D_Pin|D7D_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, D5_D2_Pin|D6_D2_Pin|D7_D2_Pin|led_status_Pin
+                          |D6D_Pin|D7D_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, RWD_Pin|ED_Pin|D4D_Pin|D5D_Pin, GPIO_PIN_RESET);
@@ -252,15 +349,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : led_green_Pin RSD_Pin */
-  GPIO_InitStruct.Pin = led_green_Pin|RSD_Pin;
+  /*Configure GPIO pins : led_green_Pin RS_D2_Pin RW_D2_Pin EN_D2_Pin
+                           D4_D2_Pin D0D_Pin D1D_Pin D2D_Pin
+                           D3D_Pin RSD_Pin */
+  GPIO_InitStruct.Pin = led_green_Pin|RS_D2_Pin|RW_D2_Pin|EN_D2_Pin
+                          |D4_D2_Pin|D0D_Pin|D1D_Pin|D2D_Pin
+                          |D3D_Pin|RSD_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : led_status_Pin D6D_Pin D7D_Pin */
-  GPIO_InitStruct.Pin = led_status_Pin|D6D_Pin|D7D_Pin;
+  /*Configure GPIO pins : D5_D2_Pin D6_D2_Pin D7_D2_Pin led_status_Pin
+                           D6D_Pin D7D_Pin */
+  GPIO_InitStruct.Pin = D5_D2_Pin|D6_D2_Pin|D7_D2_Pin|led_status_Pin
+                          |D6D_Pin|D7D_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
