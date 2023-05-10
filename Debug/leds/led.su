@@ -1,5 +1,0 @@
-../leds/led.c:14:6:led_on	16	static
-../leds/led.c:43:6:led_off	16	static
-../leds/led.c:72:6:led_all_on	8	static
-../leds/led.c:82:6:led_all_off	8	static
-../leds/led.c:93:9:button_read	24	static
