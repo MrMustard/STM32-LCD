@@ -93,6 +93,21 @@ after to init the object you can use the object in all functions of lcd, remembe
 ```
 
 
+## Example of all the code
+
+```C
+lcd_t lcd_1= lcd_create_4_bit(D1_RS_GPIO_Port, D1_RW_GPIO_Port, D1_E_GPIO_Port,
+  								D1_RS_Pin, D1_RW_Pin, D1_E_Pin,
+  								D1_D7_GPIO_Port, D1_D6_GPIO_Port, D1_D5_GPIO_Port, D1_D4_GPIO_Port,
+  								D1_D7_Pin,D1_D6_Pin, D1_D5_Pin,D1_D4_Pin,lcd_chr_16x2_mode);
+
+;
+  lcd_clear(&lcd_1);//clear display 1
+  lcd_set_cursor(&lcd_1, 0, 0);
+  lcd_print_string(&lcd_1, "TEST LCD 1");
+  lcd_set_cursor(&lcd_1, 1, 0);
+  lcd_print_string(&lcd_1, "4 bit mode 16x2");
+```
 
 
 
