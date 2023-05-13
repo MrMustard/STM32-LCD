@@ -34,7 +34,7 @@ First you have to define the necesary outputs of microcontroller.
 						uint16_t D7_PIN,uint16_t D6_PIN,uint16_t D5_PIN,uint16_t D4_PIN,uint8_t character);
  
  ```
-  the arguments are:
+  the arguments for 4 bit mode are:
  1. RS PORT: port of gpio RS pin
  2. RW PORT: port of gpio rw pin
  3. E PORT: port of gpio e pin
