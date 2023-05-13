@@ -50,7 +50,8 @@ First you have to define the necesary outputs of microcontroller.
  13. D5 PIN:gpio D5 pin
  14. D4 PIN:gpio D4 pin
  15. CHARACTER MODE: SELECT THE 16X2 OR  20X4  MODE
- 16. 
+ 
+ 
  For 8 bit mode are the same but you have to add 4 port and 4 pins more
  CHARACTER MODE CAN BE 16x2 or 20x4 using the next syntax
  ```
