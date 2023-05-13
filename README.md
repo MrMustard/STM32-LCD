@@ -13,7 +13,17 @@ First you have to define the necesary outputs of microcontroller.
 
 ### 2. import the library to stm32cubeide project, you have to add lcd.c and lcd.h 
 ### 3. Create a lcd_t varaible and initialice it.
- you have two function for initialice lcd, the 4 bit init function and the 8 bit init function
+ example Create lcd for 4 bit and 16x2 mode: 
+
+```C
+  lcd_t lcd_1= lcd_create_4_bit(D1_RS_GPIO_Port, D1_RW_GPIO_Port, D1_E_GPIO_Port,
+  				D1_RS_Pin, D1_RW_Pin, D1_E_Pin,
+  				D1_D7_GPIO_Port, D1_D6_GPIO_Port, D1_D5_GPIO_Port, D1_D4_GPIO_Port,
+  				D1_D7_Pin,D1_D6_Pin, D1_D5_Pin,D1_D4_Pin,lcd_chr_16x2_mode);
+
+```
+
+ you have two function for initialize lcd, the 4 bit init function and the 8 bit init function
  Function for create and init the lcd 4 bit mode:
  
   ```C
@@ -61,15 +71,7 @@ lcd_t lcd_create_8_bit(	GPIO_TypeDef * RS_PORT,GPIO_TypeDef * RW_PORT,GPIO_TypeD
 						uint16_t D3_PIN,uint16_t D2_PIN,uint16_t D1_PIN,uint16_t D0_PIN,uint8_t character);
 ```
 
-### example Create lcd for 4 bit and 16x2 mode: 
 
-```C
-  lcd_t lcd_1= lcd_create_4_bit(D1_RS_GPIO_Port, D1_RW_GPIO_Port, D1_E_GPIO_Port,
-  				D1_RS_Pin, D1_RW_Pin, D1_E_Pin,
-  				D1_D7_GPIO_Port, D1_D6_GPIO_Port, D1_D5_GPIO_Port, D1_D4_GPIO_Port,
-  				D1_D7_Pin,D1_D6_Pin, D1_D5_Pin,D1_D4_Pin,lcd_chr_16x2_mode);
-
-```
 
 
 after to init the object you can use the object in all functions of lcd, remember that you have to send the memory direction of the object
