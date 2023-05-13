@@ -1,3 +1,4 @@
+
 /*
  * lcd.c
  *
@@ -7,6 +8,7 @@
 
 
 #include "lcd.h"
+
 /*Definiciones de instrucciones*/
 
 /************************************** Command register **************************************/
