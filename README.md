@@ -3,6 +3,8 @@ This library is for stm32 but you can make a port for another microcontroller ea
 this libraries is still not yet finished but it works.
 the microcontroller using in the examples are STM32G030C8T6.
 
+Using this library you can use displays as many as you want, you only have to declare all the ports and pins for the displays 
+
 
 ## How to use the library
 
